@@ -2,3 +2,4 @@
 Tech Stack: Next.js, Typescript, Tailwind CSS
 
 1. [Countdown Timer](https://countdowntimer-km3uvmcc4-saadbutt27s-projects.vercel.app/)
+2. [Weather Widget](https://weather-widget-rust.vercel.app/)
