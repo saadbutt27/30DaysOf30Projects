@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { ThermometerIcon, CloudIcon, MapPinIcon } from 'lucide-react'
+import toast, { Toaster } from 'react-hot-toast';
 
 interface WeatherData {
     temperature: number,
@@ -16,7 +17,6 @@ interface WeatherData {
 export default function WeatherWidgets() {
     const [location, setLocation] = useState<string>("")
     const [weather, setWeather] = useState<WeatherData | null>(null)
-    const [error, setError] = useState<string | null>(null)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
@@ -24,23 +24,24 @@ export default function WeatherWidgets() {
         const trimmedLocation = location.trim()
 
         if (trimmedLocation === "") {
-            setError("Please eneter a valid location.")
+            toast.error("Please eneter a valid location.")
             setWeather(null)
             return
         }
 
         setIsLoading(true)
-        setError(null)
+        const toastId = toast.loading('Loading...');
 
         try {
             const response = await fetch(
                 `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${trimmedLocation}`
             )
-            console.log(response)
             if(!response.ok) {
                 throw new Error("City not found!")
             }
+
             const data = await response.json()
+
             const weatherData: WeatherData = {
                 temperature: data.current.temp_c,
                 weatherDescription: data.current.condition.text,
@@ -50,10 +51,11 @@ export default function WeatherWidgets() {
             setWeather(weatherData)
         } catch (error) {
             console.error("Error fetching data:", error)
-            setError("City not found. Please try again.")
+            toast.error("City not found. Please try again.");
             setWeather(null)
         } finally {
             setIsLoading(false)
+            toast.dismiss(toastId);
         }
     }
 
@@ -66,7 +68,7 @@ export default function WeatherWidgets() {
             } else if (temperature < 20) {
                 return `The temperature is ${temperature}°C! Comforatble with a light jacket`;
             } else if (temperature < 30) {
-                return `It's pleasent at ${temperature}°C! Enojoy the weather!`;
+                return `It's pleasent at ${temperature}°C! Enjoy the weather!`;
             } else {
                 return `It's hot at ${temperature}°C! Stay hydrated! Too hot to handle 😂`;
             }
@@ -107,11 +109,12 @@ export default function WeatherWidgets() {
     }
 
   return (
-    <div className="flex justify-center items-center h-screen">
-        <Card className="w-full max-w-lg mx-auto text-center">
+    <div className="bg-blue-300 dark:bg-gray-900 flex justify-center items-center h-screen p-10">
+        <Toaster />
+        <Card className="w-full max-w-md text-center bg-white/20 shadow-md backdrop-blur-sm">
             <CardHeader>
-                <CardTitle>Weather Widget</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-2xl">Weather Widget</CardTitle>
+                <CardDescription className="text-gray-500">
                     Search for the weather conditions in your city.
                 </CardDescription>
             </CardHeader>
@@ -129,13 +132,9 @@ export default function WeatherWidgets() {
                         {isLoading ? "Loading..." : "Search"}
                     </Button>
                 </form>
-                
-                {error && 
-                    <div className="mt-4 text-red-500">{error}</div>
-                }
 
                 {weather &&
-                    <div className="mt-4  grid gap-2">
+                    <div className="mt-4 grid gap-2">
                         <div className="flex items-center gap-2">
                             <ThermometerIcon className="w-6 h-6" />
                             <div>{getTemperatureMessage(weather.temperature, weather.unit)}</div>
