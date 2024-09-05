@@ -24,7 +24,7 @@ export default function NumberGuessing(): JSX.Element {
     useEffect(() => {
         if (gameStarted && !paused) {
             const randomNumber: number = Math.floor(Math.random() * 10) + 1
-            console.log(randomNumber)
+            // console.log(randomNumber)
             setTargetNumber(randomNumber)
         }
     }, [gameStarted, paused])
