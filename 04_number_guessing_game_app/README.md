@@ -1,4 +1,4 @@
-# Project 2 - Number Guessing Game
+# Project 4 - Number Guessing Game
 ---
 **Description:**
 A game app to guess the numbers and play.

@@ -1,4 +1,4 @@
-# Project 2 - Birthday Wishing
+# Project 3 - Birthday Wishing
 ---
 **Description:**
 A birthday wish application
