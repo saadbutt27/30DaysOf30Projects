@@ -1,9 +1,9 @@
 # Project 15 - Expense Tracker
 ---
 **Description:**
-A timer for the Pomodoro Technique.
+Track daily expenses.
 
 **Functionalities:**
-*   Set work and break durations
-*   Start, pause, and reset the timer
-*   Display current session (work/break) and remaining time
+*   Add, edit, and delete expense items
+*   Display total expenses
+*   Persistent storage using local storage
