@@ -1,4 +1,4 @@
-# Project 24 - Image Slider App
+# Project 23 - Image Slider App
 ---
 **Description:**
 A simple dynamic image slider/carousel.
