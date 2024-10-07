@@ -1,6 +1,6 @@
 ## 30 Days of 30 Projects
-Tech Stack: Next.js, Typescript, Tailwind CSS
-
-1. [Countdown Timer](https://countdowntimer-km3uvmcc4-saadbutt27s-projects.vercel.app/)
-2. [Weather Widget](https://weather-widget-rust.vercel.app/)
-3. [Birthday Wish](https://birthday-wish-ashy.vercel.app/)
+Tech Stack: 
+  - Next.js
+  - Typescript
+  - Tailwind CSS
+  - Shadcn UI
