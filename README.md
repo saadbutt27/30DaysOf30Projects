@@ -5,3 +5,4 @@ Tech Stack:
   - Tailwind CSS
   - Shadcn UI
   - Lucide React (Icons library)
+  - REST API
