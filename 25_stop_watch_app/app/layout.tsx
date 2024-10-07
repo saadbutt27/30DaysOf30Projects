@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Stopwatch App",
-  description: "A basic stopwatch application",
+  title: "Stopwatch",
+  description: "A basic stopwatch application.",
 };
 
 export default function RootLayout({

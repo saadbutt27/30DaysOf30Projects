@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "User Generator App",
+  title: "User Generator",
   description: "Generate random user profiles.",
 };
 
