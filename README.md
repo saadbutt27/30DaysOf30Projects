@@ -4,3 +4,4 @@ Tech Stack:
   - Typescript
   - Tailwind CSS
   - Shadcn UI
+  - Lucide React (Icons library)
